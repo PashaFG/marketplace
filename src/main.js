@@ -1,6 +1,15 @@
 import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import App from '@/App.vue'
+import svg from '@/assets/svg/index.js'
+import uiComponents from '@/components/UI/index.js'
 
-createApp(App).use(store).use(router).mount('#app')
+const app = createApp(App)
+
+svg.forEach(iconSvg => {
+  app.component(iconSvg.name, iconSvg)
+})
+uiComponents.forEach(component => {
+  app.component(component.name, component)
+})
+
+app.mount('#app')
